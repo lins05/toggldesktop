@@ -6,7 +6,9 @@
 #include "./toggl.h"
 #include "./settingsview.h"
 
+#ifdef __linux
 #include <X11/extensions/scrnsaver.h>  // NOLINT
+#endif // __linux
 
 IdleNotificationDialog::IdleNotificationDialog(QWidget *parent)
     : QDialog(parent),
@@ -93,6 +95,7 @@ void IdleNotificationDialog::displayIdleNotification(
 }
 
 void IdleNotificationDialog::timeout() {
+#ifdef __linux
     Display *display = XOpenDisplay(NULL);
     if (!display) {
         return;
@@ -104,6 +107,7 @@ void IdleNotificationDialog::timeout() {
     }
     XFree(info);
     XCloseDisplay(display);
+#endif // __linux
 }
 
 void IdleNotificationDialog::on_pushButton_clicked() {
