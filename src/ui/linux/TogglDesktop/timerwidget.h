@@ -8,6 +8,7 @@
 #include <QTimer>
 #include <QLabel>
 #include <QFrame>
+#include <QShortcut>
 
 namespace Ui {
 class TimerWidget;
@@ -60,6 +61,8 @@ private:
     void clearProject();
     void clearTask();
 
+    void onShortcutDelete();
+
     void updateCoverLabel(const QString &text);
 
  private:
@@ -77,10 +80,13 @@ private:
     QVector<AutocompleteView *> timeEntryAutocompleteUpdate;
     AutocompleteListModel *descriptionModel;
 
+    bool confirmlessDelete;
     uint64_t selectedTaskId;
     uint64_t selectedProjectId;
 
     QString guid;
+
+    QShortcut *shortcutDelete;
 
     void setEllipsisTextToLabel(QLabel *label, QString text);
 };
