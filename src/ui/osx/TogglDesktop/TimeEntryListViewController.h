@@ -12,6 +12,8 @@
 #import "NSViewEscapable.h"
 #import "NSTextFieldClickable.h"
 
+@class TimeEntryDatasource;
+
 @interface TimeEntryListViewController : NSViewController
 @property (unsafe_unretained) IBOutlet NSView *headerView;
 @property (strong) IBOutlet NSPopover *timeEntrypopover;
@@ -19,4 +21,5 @@
 @property (strong) IBOutlet NSViewEscapable *timeEntryPopupEditView;
 @property (strong) IBOutlet NSScrollView *timeEntryListScrollView;
 @property (strong) IBOutlet NSTextFieldClickable *emptyLabel;
+@property (nonatomic, strong) TimeEntryDatasource *dataSource;
 @end
