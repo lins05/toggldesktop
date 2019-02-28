@@ -11,14 +11,17 @@
 #include <stdint.h>
 
 #include "./toggl.h"
-#include "./loginwidget.h"
-#include "./timeentrylistwidget.h"
 #include "./preferencesdialog.h"
 #include "./aboutdialog.h"
 #include "./feedbackdialog.h"
 #include "./qxtglobalshortcut.h"
 #include "./systemtray.h"
 #include "./powermanagement.h"
+#include "./overlaywidget.h"
+#include "./loginwidget.h"
+#include "./timeentrylistwidget.h"
+#include "./timeentryeditorwidget.h"
+#include "./idlenotificationwidget.h"
 
 namespace Ui {
 class MainWindowController;
