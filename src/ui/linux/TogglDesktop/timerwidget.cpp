@@ -21,8 +21,7 @@ tagsHolder(""),
 timeEntryAutocompleteNeedsUpdate(false),
 descriptionModel(new AutocompleteListModel(this)),
 selectedTaskId(0),
-selectedProjectId(0),
-shortcutDelete(new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Delete), this)) {
+selectedProjectId(0) {
     ui->setupUi(this);
 
     connect(TogglApi::instance, SIGNAL(displayStoppedTimerState()),
@@ -53,8 +52,6 @@ shortcutDelete(new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Delete), this)) {
     connect(ui->deleteProject, &QPushButton::clicked, this, &TimerWidget::clearProject);
     connect(ui->deleteTask, &QPushButton::clicked, this, &TimerWidget::clearTask);
 
-    connect(shortcutDelete, &QShortcut::activated, this, &TimerWidget::onShortcutDelete);
-
     ui->description->setModel(descriptionModel);
     ui->taskFrame->setVisible(false);
     ui->projectFrame->setVisible(false);
@@ -70,6 +67,19 @@ TimerWidget::~TimerWidget() {
     timer->stop();
 
     delete ui;
+}
+
+void TimerWidget::deleteTimeEntry() {
+    if (guid.isEmpty())
+        return;
+
+    if (confirmlessDelete || QMessageBox::Ok == QMessageBox(
+        QMessageBox::Question,
+        "Delete this time entry?",
+        "Deleted time entries cannot be restored.",
+        QMessageBox::Ok|QMessageBox::Cancel).exec()) {
+        TogglApi::instance->deleteTimeEntry(guid);
+    }
 }
 
 void TimerWidget::descriptionReturnPressed() {
@@ -121,19 +131,6 @@ void TimerWidget::clearTask() {
                                                 selectedTaskId,
                                                 selectedProjectId,
                                                 "");
-    }
-}
-
-void TimerWidget::onShortcutDelete() {
-    if (guid.isEmpty())
-        return;
-
-    if (confirmlessDelete || QMessageBox::Ok == QMessageBox(
-        QMessageBox::Question,
-        "Delete this time entry?",
-        "Deleted time entries cannot be restored.",
-        QMessageBox::Ok|QMessageBox::Cancel).exec()) {
-        TogglApi::instance->deleteTimeEntry(guid);
     }
 }
 

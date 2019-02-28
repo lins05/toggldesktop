@@ -6,6 +6,7 @@
 #include <QMainWindow>
 #include <QSystemTrayIcon>
 #include <QMessageBox>  // NOLINT
+#include <QShortcut>
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -92,6 +93,8 @@ class MainWindowController : public QMainWindow {
     void updateShowHideShortcut();
     void updateContinueStopShortcut();
 
+    void onShortcutDelete();
+
  private:
     Ui::MainWindowController *ui;
 
@@ -117,6 +120,8 @@ class MainWindowController : public QMainWindow {
     QString script;
 
     PowerManagement *powerManagement;
+
+    QShortcut shortcutDelete;
 
     void readSettings();
     void writeSettings();
