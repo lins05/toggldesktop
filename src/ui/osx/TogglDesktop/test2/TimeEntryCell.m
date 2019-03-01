@@ -72,6 +72,7 @@ extern void *ctx;
 - (void)prepareForReuse {
 	[super prepareForReuse];
 	self.continueButton.hidden = YES;
+	self.unsyncedIcon.hidden = YES;
 	[self resetMask];
 	[self updateHoverState:NO];
 }
