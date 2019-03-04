@@ -398,4 +398,8 @@ extern void *ctx;
 	self.unsyncedIcon.wantsLayer = NO;
 }
 
+- (IBAction)unsyncBtnOnTap:(id)sender {
+	toggl_sync(ctx);
+}
+
 @end
