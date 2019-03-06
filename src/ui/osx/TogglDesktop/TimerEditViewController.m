@@ -615,8 +615,6 @@ NSString *kInactiveTimerColor = @"#999999";
 			self.autocompleteContainerView.hidden = YES;
 			break;
 		case DisplayModeInput :
-			self.manualBox.hidden = YES;
-			self.mainBox.hidden = NO;
 			self.contentContainerView.hidden = YES;
 			self.autocompleteContainerView.hidden = NO;
 			self.autoCompleteInput.hidden = NO;
