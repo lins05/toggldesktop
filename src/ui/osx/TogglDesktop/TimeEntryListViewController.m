@@ -244,10 +244,6 @@ extern void *ctx;
 
     // Get selected index
 	NSIndexPath *clickedIndexPath = self.collectionView.clickedIndexPath;
-	if (clickedIndexPath == nil)
-	{
-		return;
-	}
 
 	if (cmd.open)
 	{
@@ -280,6 +276,11 @@ extern void *ctx;
 }
 
 - (CGRect)positionRectOfSelectedRowAtIndexPath:(NSIndexPath *)indexPath {
+	if (indexPath == nil)
+	{
+		return CGRectZero;
+	}
+
 	TimeEntryCell *selectedCell = [self getSelectedEntryCellWithIndexPath:indexPath];
 	NSRect positionRect = self.view.bounds;
 
