@@ -6,3 +6,5 @@
 #import "TimeEntryCell.h"
 #import "LoadMoreCell.h"
 #import "UIEvents.h"
+#import "AutocompleteItem.h"
+#import "AutoCompleteTableCell.h"
