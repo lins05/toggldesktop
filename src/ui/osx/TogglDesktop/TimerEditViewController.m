@@ -126,7 +126,7 @@ NSString *kInactiveTimerColor = @"#999999";
 {
 	// Manual as default
 	self.displayMode = DisplayModeManual;
-	self.autoCompleteInput.expandToMainWindow = YES;
+	self.autoCompleteInput.displayMode = AutoCompleteDisplayModeFullscreen;
 	self.liteAutocompleteDataSource.input = self.autoCompleteInput;
 	[self.liteAutocompleteDataSource setFilter:@""];
 
